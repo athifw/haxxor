@@ -4,8 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.string :author
-      t.datetime :published_at
-
+      
       t.timestamps null: false
     end
   end

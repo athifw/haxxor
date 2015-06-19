@@ -20,9 +20,8 @@ ActiveRecord::Schema.define(version: 20150619151134) do
     t.string   "title"
     t.string   "url"
     t.string   "author"
-    t.datetime "published_at"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  validates :title, :url, :author, :published_at, presence: true  
+  validates :title, :url, :author, presence: true  
 
   def to_s
     title
