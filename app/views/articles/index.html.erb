@@ -1,0 +1,12 @@
+<h1>Index</h1>
+<% @articles.each do |article| %>
+  <br>
+  <%= article.title %>
+  <br>
+  <%= article.url %>
+  <br>
+  <%= article.author %>
+  <br>
+  <%= article.published_at %>
+  <br>
+<% end %>
