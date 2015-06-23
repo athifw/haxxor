@@ -2,15 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "Managing articles" do
   describe "viewing the index page" do
-    let!(:post_1) { create :article }
-    let!(:post_2) { create :article }
-
+    let!(:posts) { create_list :article, 20 }
+    let!(:old_post) { create :article, created_at: Time.now - 5.days }
+    
     it "shows all articles" do
       visit '/articles'
-      expect(page).to have_content(post_1.title)
-      expect(page).to have_content(post_2.title)
-      page.body.index(post_2.title).should < page.body.index(post_1.title) 
-    end
+      posts.each do |post|
+        expect(page).to have_content(post.title)
+      end
+      expect(page).to_not have_content(old_post.title)      
+    end    
   end
   
   context "creating an article" do
