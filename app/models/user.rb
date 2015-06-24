@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates :title, :email, presence: true
+  validates :name, :email, presence: true
 
   def to_s
     title

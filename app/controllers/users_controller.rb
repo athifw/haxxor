@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
   def new
-    @user = Users.new
+    @user = User.new
+  end
+
+  def index
+    @users = User.order(created_at: :desc)
   end
 
   def create
-    @user = Users.new(user_params)
+    @user = User.new(user_params)
     if @user.save
       redirect_to articles_path
     else
@@ -14,6 +18,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params[:user].permit(:name, :email, :password_digest)
+    params[:user].permit(:name, :email, :password, :password_confirmation)
   end
 end
