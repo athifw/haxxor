@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       id = session[:current_user_id]
       
       if id
-        User.find_by(id: id)
+        User.find(id)
       end   
     end
   end
@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def current_user=(user)
-    session[:current_user_id] = user.id
+    session[:current_user_id] = user.try(:id)
+    @current_user = user
   end
+
 end
