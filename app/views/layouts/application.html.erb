@@ -8,6 +8,10 @@
 </head>
 <body>
 <h1>Haxxor News</h1>
+<br>
+<% flash.keys.each do |key| %>
+  <div class="flash <%= key %>"><%= flash[key] %></div>
+<% end %>
 <%= yield %>
 
 </body>
