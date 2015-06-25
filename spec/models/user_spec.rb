@@ -15,5 +15,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "authenticate" do
+    context "email and password match" do
+      let!(:user) { create :user, email: 'tom@test.com' }
+      it "returns user" do
+        expect(User.authenticate('tom@test.com','password')).to eq(user)
+      end
+    end
+    context "email and password don't match" do
+      it "returns nil" do
+        expect(User.authenticate('tom@test.com','wrongpass')).to eq(nil)
+      end
+    end
+  end
+
 end
 

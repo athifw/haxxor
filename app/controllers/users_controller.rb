@@ -3,13 +3,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index
-    @users = User.order(created_at: :desc)
-  end
-
   def create
     @user = User.new(user_params)
     if @user.save
+      self.current_user = @user
       redirect_to articles_path, notice: 'Account created.'
     else
       render :new
