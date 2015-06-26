@@ -6,7 +6,7 @@
   <%= f.text_field :url %>
   <br>
   <%= f.label :author %>
-  <%= f.text_field :author %>
+  <%= f.text_field :author, value: current_user %>
   <br>
   <%= f.submit %>
 <% end %>

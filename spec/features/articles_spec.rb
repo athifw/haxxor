@@ -15,7 +15,13 @@ RSpec.describe "Managing articles" do
   end
   
   context "creating an article" do
+    let!(:user) { create :user, email: 'article@test.com' }
     before do
+      visit '/articles'
+      click_link 'Log in'
+      fill_in 'Email', with: 'article@test.com'
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit '/articles'
       click_link "New Article"
     end
@@ -35,6 +41,14 @@ RSpec.describe "Managing articles" do
         click_button "Create Article"
         expect(page).to have_content("Created Title")
       end
+    end
+  end
+
+  context "creating an article without login" do
+    it "displays errors" do
+      visit '/articles'
+      click_link "New Article"
+      expect(page).to have_content("You must be logged in to access this section")
     end
   end
 end

@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :require_login, only: [:new]
+
   def index
     @articles = Article.order(created_at: :desc).limit(20)
   end
@@ -21,5 +23,12 @@ class ArticlesController < ApplicationController
 
   def article_params
     params[:article].permit(:title, :url, :author)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to articles_path # halts request cycle
+    end
   end
 end
