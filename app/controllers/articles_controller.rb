@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :require_login, only: [:new]
+  before_action :require_login, only: [:new, :create]
 
   def index
     @articles = Article.order(created_at: :desc).limit(20)
