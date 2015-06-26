@@ -7,14 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Haxxor News</h1>
+<h1><%= link_to("Haxxor News", articles_path) %></h1>
 <br>
 <% flash.keys.each do |key| %>
   <div class="flash <%= key %>"><%= flash[key] %></div>
 <% end %>
 
 <% if logged_in? %>
-  <p><%= current_user %></p>
+  <%= link_to("Log out", session_path, method: :delete) %>
 <% else %>
   <%= link_to("Create an Account", new_user_path) %>
   <%= link_to("Log in", new_session_path) %>

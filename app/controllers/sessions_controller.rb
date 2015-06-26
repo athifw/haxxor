@@ -13,4 +13,9 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    self.current_user = nil
+    redirect_to articles_path
+  end
 end

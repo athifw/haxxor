@@ -19,7 +19,20 @@ RSpec.describe "Managing sessions" do
         fill_in 'Password', with: 'password'
         click_button 'Log in'
         expect(page).to have_content("Welcome Bob")
+        expect(page).to have_content("Log out")
       end
+    end
+  end
+  describe "logging out" do
+    let!(:loginuser) { create :user, email: 'test@test.com' }
+    it "allows user to log back in" do
+      visit '/articles'
+      click_link 'Log in'
+      fill_in 'Email', with: 'test@test.com'
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
+      click_link 'Log out'
+      expect(page).to have_content("Log in")
     end
   end
 end
