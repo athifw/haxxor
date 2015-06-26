@@ -37,7 +37,6 @@ RSpec.describe "Managing articles" do
       it "displays article" do
         fill_in 'Title', with: 'Created Title'
         fill_in 'URL', with: 'http://github.com'
-        fill_in 'Author', with: 'Me'
         click_button "Create Article"
         expect(page).to have_content("Created Title")
       end

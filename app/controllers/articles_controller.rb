@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    
+    @article.author = current_user.username
     if @article.save
       redirect_to articles_path
     else
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params[:article].permit(:title, :url, :author)
+    params[:article].permit(:title, :url)
   end
 
   def require_login
