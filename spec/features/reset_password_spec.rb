@@ -4,7 +4,7 @@ RSpec.describe "Resetting passwords" do
   let!(:user) { create :user, email: 'another@test.com', username: 'Another' }
     
   before do
-    user.send_password_reset
+    user.send_password_reset_token
   end
   
   context 'visiting verification link' do

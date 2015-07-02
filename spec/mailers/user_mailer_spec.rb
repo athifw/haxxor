@@ -5,7 +5,7 @@ RSpec.describe UserMailer, type: :mailer do
     let!(:user) { create :user, email: 'bob@test.com', username: 'Bob' }
     let(:mail) { UserMailer.password_reset(user) }
     before do
-      user.send_password_reset
+      user.send_password_reset_token
     end
     it "renders the headers" do
       expect(mail.subject).to eq("Password Reset")

@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of :username }
   it { should validate_uniqueness_of :email }
   it { should have_secure_password }
+  it { should have_many :articles }
   
   describe "#to_s" do
     it "returns username" do
