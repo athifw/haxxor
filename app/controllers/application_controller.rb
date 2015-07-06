@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
       redirect_to articles_path # halts request cycle
     end
   end
-  helper_method :require_login
-  
+    
   def current_user=(user)
     session[:current_user_id] = user.try(:id)
     @current_user = user
