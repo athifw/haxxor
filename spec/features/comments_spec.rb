@@ -12,7 +12,7 @@ RSpec.describe "Managing comments" do
   end
 
   context "viewing comments index page" do
-    let!(:new_comment) { create :comment, text: 'Test Comment', article: article }   
+    let!(:new_comment) { create :comment, text: 'Test Comment', commentable: article }   
     it "shows comment" do
       click_link 'Show Comments'
       expect(page).to have_content(new_comment.text)  

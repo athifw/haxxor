@@ -1,17 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  subject { create :comment }
+  let!(:new_comment) { create :comment }
 
-  it { should validate_presence_of :article }
-  it { should belong_to :article }
+  it { should validate_presence_of :commentable }
+  it { should belong_to :commentable }
   it { should validate_presence_of :user }
   it { should belong_to :user }
 
   describe "to_s" do
     it "returns comment text" do
-      subject.text = "Test comment"
-      expect(subject.to_s).to eq("Test comment")
+      new_comment.text = "Test comment"
+      expect(new_comment.to_s).to eq("Test comment")
     end
   end
 end

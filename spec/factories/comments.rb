@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :comment do
     sequence(:text) { |n| "Comment #{n}" }
     user
-    article
+    association :commentable, factory: :article, strategy: :build
   end
 end
