@@ -9,6 +9,10 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def create
     @article = current_user.articles.build(article_params)
     if @article.save
@@ -22,12 +26,5 @@ class ArticlesController < ApplicationController
 
   def article_params
     params[:article].permit(:title, :url)
-  end
-
-  def require_login
-    unless logged_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to articles_path # halts request cycle
-    end
   end
 end

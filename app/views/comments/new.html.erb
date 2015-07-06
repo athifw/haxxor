@@ -1,0 +1,13 @@
+<h3>New Comment</h3>
+<%= form_for [article, @comment] do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
+
+<% if @comment.errors.any? %>
+  <% @comment.errors.full_messages.each do |error| %>
+    <%= error %>
+    <br>
+  <% end %>
+<% end %>

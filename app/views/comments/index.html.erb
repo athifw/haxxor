@@ -1,0 +1,13 @@
+<br>
+<%= link_to 'Back to Article', @article %>
+<%= link_to 'New Comment', new_article_comment_path(@article) %>
+<% @article.comments.each do |comment| %>
+  <br>
+  <%= comment.user %>
+  <br>
+  <%= comment %>
+  <br>
+  <%= comment.created_at.to_formatted_s(:short) %>
+  <br>
+<% end %>
+  

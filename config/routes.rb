@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :articles, only: [:index, :create, :new]
+
+  resources :articles, only: [:index, :create, :new, :show] do
+    resources :comments, only: [:index, :new, :create]
+  end
   resources :users, only: [:create, :new]
   resource :session, only: [:create, :new, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
