@@ -2,18 +2,18 @@ class CommentsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-    @comments = article.comments
+    @comments = parent.comments
   end
 
   def new
-    @comment = article.comments.build
+    @comment = parent.comments.build
   end
 
   def create
-    @comment = article.comments.build(comment_params)
+    @comment = parent.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to article
+      redirect_to parent
     else
       render :new
     end
@@ -24,8 +24,12 @@ class CommentsController < ApplicationController
     params[:comment].permit(:text)
   end
 
-  def article
-    @article ||= Article.find(params[:article_id])
+  def parent
+    @parent ||= if params[:article_id]
+      Article.find(params[:article_id])
+    else
+      Comment.find(params[:comment_id])
+    end
   end
-  helper_method :article
+  helper_method :parent
 end

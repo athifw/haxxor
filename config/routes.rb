@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   resources :articles, only: [:index, :create, :new, :show] do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:new, :create]
+  end
+  resources :comments, only: [] do
+    resources :comments, only: [:new, :create]
   end
   resources :users, only: [:create, :new]
   resource :session, only: [:create, :new, :destroy]

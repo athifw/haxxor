@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "Managing comments" do
   let!(:article) { create :article }
   let!(:user) { create :user, email: 'bob@test.com', username: 'Bob' }
+  let!(:new_comment) { create :comment, text: 'Test Comment', commentable: article }   
+
   before do
     visit '/session/new'
     fill_in 'Email', with: 'bob@test.com'
@@ -12,9 +14,7 @@ RSpec.describe "Managing comments" do
   end
 
   context "viewing comments index page" do
-    let!(:new_comment) { create :comment, text: 'Test Comment', commentable: article }   
     it "shows comment" do
-      click_link 'Show Comments'
       expect(page).to have_content(new_comment.text)  
     end
   end
@@ -24,7 +24,6 @@ RSpec.describe "Managing comments" do
       click_link 'New Comment'
       fill_in 'Text', with: 'Comment Creation'
       click_button 'Create Comment'
-      click_link 'Show Comments'
       expect(page).to have_content('Comment Creation')
     end
 

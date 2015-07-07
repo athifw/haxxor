@@ -1,5 +1,5 @@
 <h3>New Comment</h3>
-<%= form_for [article, @comment] do |f| %>
+<%= form_for [parent, @comment] do |f| %>
   <%= f.label :text %>
   <%= f.text_field :text %>
   <%= f.submit %>
