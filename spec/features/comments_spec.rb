@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "Managing comments" do
   let!(:article) { create :article }
   let!(:user) { create :user, email: 'bob@test.com', username: 'Bob' }
-  let!(:new_comment) { create :comment, text: 'Test Comment', commentable: article }   
+  let!(:new_comment) { create :comment, text: 'Test Comment', commentable: article }
+  let!(:nested_comment) { create :comment, text: 'Nested Comment', commentable: new_comment }   
 
   before do
     visit '/session/new'
@@ -15,7 +16,8 @@ RSpec.describe "Managing comments" do
 
   context "viewing comments index page" do
     it "shows comment" do
-      expect(page).to have_content(new_comment.text)  
+      expect(page).to have_content(new_comment.text)
+      expect(page).to have_content(nested_comment.text)  
     end
   end
 

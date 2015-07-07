@@ -7,4 +7,12 @@ class Comment < ActiveRecord::Base
   def to_s
     text.to_s
   end
+
+  def article
+    if commentable.is_a?(Article)
+      commentable
+    else
+      commentable.article
+    end
+  end
 end
