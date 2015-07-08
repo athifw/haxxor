@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'upvotes/create'
+
   resources :articles, only: [:index, :create, :new, :show] do
     resources :comments, only: [:new, :create]
+    resource :upvote, only: [:create]
+    resource :downvote, only: [:create]
   end
   resources :comments, only: [] do
     resources :comments, only: [:new, :create]
+    resource :upvote, only: [:create]
+    resource :downvote, only: [:create]
   end
   resources :users, only: [:create, :new]
   resource :session, only: [:create, :new, :destroy]
