@@ -4,22 +4,7 @@
 <%= link_to 'New Comment', new_article_comment_path(@article) %>
 <br>
 
-<% def recursion(old_comment) %>
-  <% old_comment.comments.each do |comment| %>
-  <br>
-    <li><%= render 'comments/view', comment: comment %></li>
-    <% if !comment.comments.empty? %>
-      <ul>
-      <% recursion(comment) %>
-      </ul>
-    <% end %>
-  <% end %>
-<% end %>
-
 <% @article.comments.each do |comment| %>
   <br>
-  <%= render 'comments/view', comment: comment %>
-  <ul>
-  <% recursion(comment) %> 
-  </ul>
+  <%= render 'comments/comment', comment: comment %>
 <% end %> 

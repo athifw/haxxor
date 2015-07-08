@@ -6,3 +6,11 @@ Posted <%= time_ago_in_words(comment.created_at) %> ago
 <br>
 <%= link_to 'Reply', new_comment_comment_path(comment) %>
 <br>
+<ul>
+<% comment.comments.each do |child| %>
+  <br>
+  <li>
+  <%= render 'comments/comment', comment: child %>
+  </li>
+<% end %>
+</ul>
