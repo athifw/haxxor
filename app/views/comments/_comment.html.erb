@@ -1,11 +1,19 @@
-<%= comment.user %>
-<br>
-<%= comment %>
-<br>
-Posted <%= time_ago_in_words(comment.created_at) %> ago
-<br>
-<%= link_to 'Reply', new_comment_comment_path(comment) %>
-<br>
+<div id="<%= dom_id(comment) %>">
+  <%= comment.user %>
+  <br>
+  <%= comment %>
+  <br>
+  Karma: <%= comment.score %>
+  <br>
+  Posted <%= time_ago_in_words(comment.created_at) %> ago
+  <br>
+  <% if logged_in? %>
+  <%= link_to 'Reply', new_comment_comment_path(comment) %>
+  <%= upvote_link(comment, current_user) %>
+  <%= downvote_link(comment, current_user) %>
+<% end %>
+</div>
+
 <ul>
 <% comment.comments.each do |child| %>
   <br>

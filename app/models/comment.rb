@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
+  include Voteable
   belongs_to :user
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
-  has_many :votes, as: :voteable
   validates :user, :commentable, presence: true
 
   def to_s

@@ -14,8 +14,6 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       redirect_to @comment.article
-    else
-      render :new
     end
   end
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'downvotes/create'
+
   get 'upvotes/create'
 
   resources :articles, only: [:index, :create, :new, :show] do

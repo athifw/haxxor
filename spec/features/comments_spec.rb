@@ -30,11 +30,10 @@ RSpec.describe "Managing comments" do
     end
 
     context 'not logged in' do
-      it 'displays error' do
+      it "doesn't display new comment form" do
         click_link 'Log out'
         visit "/articles/#{article.id}"
-        click_link 'New Comment'
-        expect(page).to have_content('You must be logged in to access this section')
+        expect(page).not_to have_content('New Comment')
       end
     end
   end

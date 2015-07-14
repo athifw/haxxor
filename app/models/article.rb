@@ -1,10 +1,14 @@
 class Article < ActiveRecord::Base
+  include Voteable
   validates :title, :url, :user, presence: true  
   belongs_to :user
   has_many :comments, as: :commentable
-  has_many :votes, as: :voteable
 
   def to_s
     title
+  end
+
+  def article
+    self
   end
 end

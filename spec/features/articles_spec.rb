@@ -44,10 +44,9 @@ RSpec.describe "Managing articles" do
   end
 
   context "creating an article without login" do
-    it "displays errors" do
+    it "doesn't display article form" do
       visit '/articles'
-      click_link "New Article"
-      expect(page).to have_content("You must be logged in to access this section")
+      expect(page).not_to have_content("New Article")
     end
   end
 end
