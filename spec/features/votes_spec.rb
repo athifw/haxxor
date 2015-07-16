@@ -40,11 +40,13 @@ RSpec.describe "Votes" do
   end
 
   describe "upvoting a comment" do
-    it "adds comment score" do
+    before do
       visit "/articles/#{article_with_comment.id}"
       within("#comment_#{comment.id}") do
         click_link 'Upvote'
       end
+    end
+    it "adds comment score" do
       within("#comment_#{comment.id}") do
         expect(page).to have_content("Upvoted")
         expect(page).to have_content("Karma: 1")
@@ -53,15 +55,17 @@ RSpec.describe "Votes" do
   end
 
   describe "downvoting a comment" do
-    it "subtracts comment score" do
+    before do
       visit "/articles/#{article_with_comment.id}"
       within("#comment_#{comment.id}") do
         click_link 'Downvote'
       end
+    end
+    it "subtracts comment score" do
       within("#comment_#{comment.id}") do
         expect(page).to have_content("Downvoted")
         expect(page).to have_content("Karma: -1")
-      end      
+      end    
     end
   end
 end

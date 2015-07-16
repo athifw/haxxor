@@ -1,7 +1,14 @@
 FactoryGirl.define do
   factory :vote do
-    score 1
     user
+
+    factory :upvote do
+      score 1
+    end
+
+    factory :downvote do
+      score -1
+    end
   end
 
 end

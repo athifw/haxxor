@@ -5,9 +5,6 @@
   <%= link_to 'Back', articles_path %>
   <% if logged_in? %>
     <%= link_to 'New Comment', new_article_comment_path(@article) %>
-  <% end %>
-
-  <% if logged_in? %>
     <%= upvote_link(@article, current_user) %>
     <%= downvote_link(@article, current_user) %>
   <% end %>

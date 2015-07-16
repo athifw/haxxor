@@ -3,8 +3,7 @@ class DownvotesController < ApplicationController
 
   def create
     @vote = parent.votes.for_user(current_user).first_or_initialize
-    @vote.score = -1
-    @vote.save
+    @vote.update_attributes(score: -1)
     redirect_to :back
   end
 
