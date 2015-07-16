@@ -17,11 +17,7 @@ RSpec.describe "Managing articles" do
   context "creating an article" do
     let!(:user) { create :user, email: 'article@test.com' }
     before do
-      visit '/articles'
-      click_link 'Log in'
-      fill_in 'Email', with: 'article@test.com'
-      fill_in 'Password', with: 'password'
-      click_button 'Log in'
+      sign_in(user)
       visit '/articles'
       click_link "New Article"
     end

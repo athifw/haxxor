@@ -4,9 +4,9 @@ RSpec.describe VotesHelper, type: :helper do
   let!(:article) { create :article, title: 'Comment tester' }
   let!(:user_novote) { create :user }
   let!(:user_upvote) { create :user }
-  let!(:upvote) { create :upvote, score: 1, voteable: article, user: user_upvote }
+  let!(:upvote) { create :upvote, voteable: article, user: user_upvote }
   let!(:user_downvote) { create :user }
-  let!(:downvote) { create :downvote, score: -1, voteable: article, user: user_downvote }
+  let!(:downvote) { create :downvote, voteable: article, user: user_downvote }
 
   describe "#upvote_link" do
     context "user has upvoted article" do

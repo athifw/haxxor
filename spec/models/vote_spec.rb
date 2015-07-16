@@ -13,7 +13,6 @@ RSpec.describe Vote, type: :model do
   describe "#upvote?" do
     context "is an upvote" do
     subject { upvote }
-
       it "returns true" do
         expect(subject.upvote?).to eq(true)
       end
@@ -21,7 +20,6 @@ RSpec.describe Vote, type: :model do
 
     context "is a downvote" do
       subject { downvote }
-
       it "returns false" do
         expect(subject.upvote?).to eq(false)
       end
@@ -31,7 +29,6 @@ RSpec.describe Vote, type: :model do
   describe "#downvote?" do
     context "is a downvote" do
       subject { downvote }
-
       it "returns true" do
         expect(subject.downvote?).to eq(true)
       end
@@ -39,7 +36,6 @@ RSpec.describe Vote, type: :model do
 
     context "is an upvote" do
       subject { upvote }
-
       it "returns false" do
         expect(subject.downvote?).to eq(false)
       end

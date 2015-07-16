@@ -7,10 +7,7 @@ RSpec.describe "Votes" do
   let!(:comment) { create :comment, commentable: article_with_comment }
 
   before do
-    visit '/session/new'
-    fill_in 'Email', with: 'bob@test.com'
-    fill_in 'Password', with: 'password'
-    click_button 'Log in'    
+    sign_in(user)   
   end
 
   describe "upvoting an article" do

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-
-  resources :articles, only: [:index, :create, :new, :show] do
+  root 'articles#index'
+  get 'articles', to: redirect('/')
+  resources :articles, only: [:create, :new, :show] do
     resources :comments, only: [:new, :create]
     resource :upvote, only: [:create]
     resource :downvote, only: [:create]

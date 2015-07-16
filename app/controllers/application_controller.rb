@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   private
   def current_user
-     @current_user ||= begin
+    @current_user ||= begin
       id = session[:current_user_id]
       
       if id
